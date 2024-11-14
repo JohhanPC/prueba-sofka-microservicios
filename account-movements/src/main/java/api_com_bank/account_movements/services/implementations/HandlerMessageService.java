@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class HandlerMessage implements IHandlerMessage {
+public class HandlerMessageService implements IHandlerMessage {
 
     private final CustomRabbitTemplate rabbitTemplate;
 
