@@ -1,0 +1,78 @@
+version: '3.8'
+services:
+  # Servicio de base de datos para el microservicio de customer
+  customer-db:
+    image: mysql:8.0
+    container_name: customer_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: customer_db
+      MYSQL_USER: customer_user
+      MYSQL_PASSWORD: customer_password
+    ports:
+      - "3308:3306"
+    volumes:
+      - customer_db_data:/var/lib/mysql
+
+  # Servicio de base de datos para el microservicio de account-movements
+  account-movements-db:
+    image: mysql:8.0
+    container_name: account_movements_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: account_movements_db
+      MYSQL_USER: account_user
+      MYSQL_PASSWORD: account_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - account_movements_db_data:/var/lib/mysql
+
+  # Servicio de RabbitMQ
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"     # Puerto para conexiones de cliente
+      - "15672:15672"   # Puerto para la consola de administración de RabbitMQ
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin_password
+
+  # Microservicio de customer
+  customer-service:
+    build: ./customer       # Ruta relativa a la carpeta customer
+    ports:
+      - "8082:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://customer-db:3306/customer_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: customer_user
+      SPRING_DATASOURCE_PASSWORD: customer_password
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: admin
+      SPRING_RABBITMQ_PASSWORD: admin_password
+    depends_on:
+      - customer-db
+      - rabbitmq
+
+  # Microservicio de account-movements
+  account-movements-service:
+    build: ./account-movements    # Ruta relativa a la carpeta account-movements
+    ports:
+      - "8083:8084"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://account-movements-db:3306/account_movements_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: account_user
+      SPRING_DATASOURCE_PASSWORD: account_password
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: admin
+      SPRING_RABBITMQ_PASSWORD: admin_password
+    depends_on:
+      - account-movements-db
+      - rabbitmq
+
+volumes:
+  customer_db_data:
+  account_movements_db_data:
