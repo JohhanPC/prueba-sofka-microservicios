@@ -11,5 +11,4 @@ public class RabbitMQConfig {
     public Queue customerRequestQueue() {
         return new Queue("customer-request-queue", true);
     }
-
 }
