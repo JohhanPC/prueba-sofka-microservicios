@@ -1,9 +1,12 @@
 package api_com_bank.account_movements.services.implementations;
 
 import api_com_bank.account_movements.config.CustomRabbitTemplate;
+import api_com_bank.account_movements.dtos.message.AccountCreatedMessage;
+import api_com_bank.account_movements.dtos.message.CustomerCreatedMessage;
 import api_com_bank.account_movements.services.contracts.IHandlerMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -12,11 +15,20 @@ import org.springframework.stereotype.Service;
 public class HandlerMessageService implements IHandlerMessage {
 
     private final CustomRabbitTemplate rabbitTemplate;
+    private final AccountInternalService accountInternalService;
 
     @Override
-    public void sendMessage(String identificationId) {
-        log.info("Enviando mensaje a RabbitMQ: {}", identificationId);
-        rabbitTemplate.convertAndSend("customer-request-queue", identificationId);
-        log.info("Mensaje enviado exitosamente a RabbitMQ");
+    public void sendMessage(AccountCreatedMessage message) {
+        log.info("Send message of account created: {}", message);
+        rabbitTemplate.convertAndSend("notification-queue", message);
     }
+
+    @Override
+    @RabbitListener(queues = "customer-created-notification-queue")
+    public void readMessage(CustomerCreatedMessage message) {
+        log.info("Message received from RabbitMQ queue: {}", message);
+        AccountCreatedMessage accountCreatedMessage = accountInternalService.processCustomerMessage(message);
+        sendMessage(accountCreatedMessage);
+    }
+
 }

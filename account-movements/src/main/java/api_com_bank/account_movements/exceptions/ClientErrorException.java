@@ -6,7 +6,4 @@ public class ClientErrorException extends RuntimeException {
         super(message);
     }
 
-    public ClientErrorException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

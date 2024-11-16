@@ -14,7 +14,7 @@ public class RabbitMQConfig {
 
     @Bean
     public Queue customerCreatedNotificationQueue() {
-        return new Queue("customer-created-notification-queue", false);
+        return new Queue("customer-created-notification-queue", true);
     }
 
     @Bean

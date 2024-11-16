@@ -4,12 +4,12 @@ public class Messages {
 
     private Messages() {}
 
-    public static final String CUENTA_NO_ENCONTRADA = "Cuenta no encontrada con ID: %s";
-    public static final String CUENTA_CREADA = "Cuenta creada exitosamente";
-    public static final String CUENTA_ACTUALIZADA = "Cuenta actualizada exitosamente";
-    public static final String CUENTA_ELIMINADA = "Cuenta eliminada exitosamente";
-    public static final String MOVIMIENTO_CREADO = "Movimiento creado exitosamente";
-    public static final String MOVIMIENTO_NO_ENCONTRADO = "Movimiento no encontrado con ID: %s";
-    public static final String MOVIMIENTO_ACTUALIZADO = "Movimiento actualizado exitosamente";
-    public static final String MOVIMIENTO_ELIMINADO = "Movimiento eliminado exitosamente";
+    public static final String ACCOUNT_NO_FOUND = "Account no found with ID: %s";
+    public static final String ACCOUNT_CREATED = "Account created successfully";
+    public static final String ACCOUNT_UPDATED = "Account updated successfully";
+    public static final String ACCOUNT_DELETED = "Account deleted successfully";
+    public static final String MOVEMENT_CREATED = "Movement created successfully";
+    public static final String MOVEMENT_NO_FOUND = "Movement no found with ID: %s";
+    public static final String MOVEMENT_UPDATED = "Movement updated successfully";
+    public static final String MOVEMENT_DELETED = "Movement deleted successfully";
 }
