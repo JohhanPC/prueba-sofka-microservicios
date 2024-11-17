@@ -17,6 +17,8 @@ public interface AccountMapper {
 
     AccountEntity toEntity(AccountRequestDTO dto);
 
+    AccountEntity toEntity(AccountResponseDTO dto);
+
     AccountResponseDTO toDto(AccountEntity entity);
 
     default AccountsDataReportDTO toReportDto(AccountEntity entity, List<MovementReportDTO> movements) {
@@ -24,6 +26,7 @@ public interface AccountMapper {
                 entity.getAccountNumber(),
                 entity.getAccountType(),
                 entity.isState(),
+                entity.getBalance(),
                 movements
         );
     }

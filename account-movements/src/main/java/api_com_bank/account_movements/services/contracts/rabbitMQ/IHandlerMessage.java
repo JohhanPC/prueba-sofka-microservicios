@@ -1,4 +1,4 @@
-package api_com_bank.account_movements.services.contracts.rabbitMQ;
+package api_com_bank.account_movements.services.contracts.rabbitmq;
 
 import api_com_bank.account_movements.dtos.messages.AccountCreatedMessage;
 import api_com_bank.account_movements.dtos.messages.CustomerCreatedMessage;

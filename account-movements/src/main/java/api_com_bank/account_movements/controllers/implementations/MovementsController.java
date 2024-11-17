@@ -4,7 +4,6 @@ import api_com_bank.account_movements.controllers.contracts.IMovementsController
 import api_com_bank.account_movements.dtos.reports.AccountMovementsReportResponseDTO;
 import api_com_bank.account_movements.dtos.request.CreateMovementsRequestDTO;
 import api_com_bank.account_movements.dtos.request.UpdateMovementsRequestDTO;
-import api_com_bank.account_movements.dtos.response.MovementsReportResponseDTO;
 import api_com_bank.account_movements.dtos.response.ResponseDTO;
 import api_com_bank.account_movements.services.contracts.IMovementsServices;
 import api_com_bank.account_movements.utils.DateUtils;
@@ -23,7 +22,7 @@ public class MovementsController implements IMovementsController {
 
     @Override
     public ResponseEntity<ResponseDTO> create(CreateMovementsRequestDTO createMovementsRequestDTO) {
-        ResponseDTO response = movementsServices.create(createMovementsRequestDTO);
+        ResponseDTO response = movementsServices.createValidatedMovement(createMovementsRequestDTO);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 

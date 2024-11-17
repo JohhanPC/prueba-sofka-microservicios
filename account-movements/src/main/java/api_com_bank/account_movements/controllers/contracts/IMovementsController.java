@@ -3,8 +3,6 @@ package api_com_bank.account_movements.controllers.contracts;
 import api_com_bank.account_movements.dtos.reports.AccountMovementsReportResponseDTO;
 import api_com_bank.account_movements.dtos.request.CreateMovementsRequestDTO;
 import api_com_bank.account_movements.dtos.request.UpdateMovementsRequestDTO;
-import api_com_bank.account_movements.dtos.response.MovementsReportResponseDTO;
-import api_com_bank.account_movements.dtos.response.MovementsResponseDTO;
 import api_com_bank.account_movements.dtos.response.ResponseDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

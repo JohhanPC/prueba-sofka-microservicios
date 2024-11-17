@@ -17,4 +17,6 @@ public interface IMovementsServices {
 
     AccountMovementsReportResponseDTO getMovements(String clientId, Date startDate, Date endDate);
 
+    ResponseDTO createValidatedMovement(CreateMovementsRequestDTO createMovementsRequestDTO);
+
 }

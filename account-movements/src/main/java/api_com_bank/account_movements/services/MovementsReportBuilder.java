@@ -12,7 +12,6 @@ import api_com_bank.account_movements.mappers.AccountMapper;
 import api_com_bank.account_movements.mappers.MovementsMapper;
 import api_com_bank.account_movements.repositories.AccountRepository;
 import api_com_bank.account_movements.repositories.MovementsRepository;
-import api_com_bank.account_movements.services.implementations.api.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +26,7 @@ public class MovementsReportBuilder {
 
     private final MovementsRepository movementsRepository;
     private final AccountRepository accountRepository;
-    private final CustomerService customerService;
+    private final CustomerApiService customerApiService;
 
     public AccountMovementsReportResponseDTO buildReport(String clientId, Date startDate, Date endDate) {
         String clientName = fetchClientName(clientId);
@@ -36,7 +35,7 @@ public class MovementsReportBuilder {
     }
 
     private String fetchClientName(String clientId) {
-        return customerService.getCustomerByIdentificationNumber(clientId)
+        return customerApiService.getCustomerByIdentificationNumber(clientId)
                 .map(CustomerResponseDTO::getName)
                 .blockOptional()
                 .orElseThrow(() -> new ClientErrorException("Client not found for ID: " + clientId));

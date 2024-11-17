@@ -10,6 +10,7 @@ public class UpdateMovementsRequestDTO {
     private Long id;
     private Date date;
     private String movementType;
+    private double initialBalance;
     private Double value;
     private Double balance;
     private String accountNumber;

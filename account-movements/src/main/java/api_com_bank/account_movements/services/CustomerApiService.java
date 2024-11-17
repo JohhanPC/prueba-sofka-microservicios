@@ -1,4 +1,4 @@
-package api_com_bank.account_movements.services.implementations.api;
+package api_com_bank.account_movements.services;
 
 import api_com_bank.account_movements.dtos.response.CustomerResponseDTO;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class CustomerService {
+public class CustomerApiService {
 
     private final WebClient.Builder webClientBuilder;
 

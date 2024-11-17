@@ -58,4 +58,10 @@ public class AccountServices implements IAccountServices {
                 .map(AccountMapper.INSTANCE::toDto)
                 .orElseThrow(() -> new ClientErrorException(Messages.ACCOUNT_NO_FOUND + accountNumber));
     }
+
+    @Override
+    public void updateBalance(AccountEntity accountEntity) {
+        log.info("Updating balance for account: {}", accountEntity.getAccountNumber());
+        accountRepository.save(accountEntity);
+    }
 }

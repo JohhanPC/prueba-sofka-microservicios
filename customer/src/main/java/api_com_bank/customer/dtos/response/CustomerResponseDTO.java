@@ -12,6 +12,5 @@ public class CustomerResponseDTO {
     private String identificationNumber;
     private String address;
     private String phoneNumber;
-    private String customerId;
     private Boolean state;
 }

@@ -13,5 +13,6 @@ public class AccountsDataReportDTO {
     private String number;
     private String type;
     private boolean state;
+    private Double balance;
     private List<MovementReportDTO> movements;
 }

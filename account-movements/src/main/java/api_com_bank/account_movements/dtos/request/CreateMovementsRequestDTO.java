@@ -10,7 +10,6 @@ public class CreateMovementsRequestDTO {
     private Date date;
     private String movementType;
     private Double value;
-    private Double balance;
     private String accountNumber;
 
 }
