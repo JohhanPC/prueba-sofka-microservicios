@@ -37,8 +37,8 @@ public class CustomerController implements ICustomerController {
     }
 
     @Override
-    public ResponseEntity<CustomerResponseDTO> findById(String customerId) {
-        CustomerResponseDTO customer = customerServices.findById(customerId);
+    public ResponseEntity<CustomerResponseDTO> findByIdentificationNumber(String identificationNumber) {
+        CustomerResponseDTO customer = customerServices.findByIdentificationNumber(identificationNumber);
         if (customer != null) {
             return new ResponseEntity<>(customer, HttpStatus.OK);
         } else {

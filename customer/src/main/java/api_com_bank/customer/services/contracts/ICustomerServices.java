@@ -12,6 +12,6 @@ public interface ICustomerServices {
 
     ResponseDTO delete(String identificationNumber);
 
-    CustomerResponseDTO findById(String identificationNumber);
+    CustomerResponseDTO findByIdentificationNumber(String identificationNumber);
 
 }

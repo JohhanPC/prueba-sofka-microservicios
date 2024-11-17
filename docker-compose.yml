@@ -13,6 +13,8 @@ services:
       - "3308:3306"
     volumes:
       - customer_db_data:/var/lib/mysql
+    networks:
+      - custom_network
 
   # Servicio de base de datos para el microservicio de account-movements
   account-movements-db:
@@ -27,6 +29,8 @@ services:
       - "3307:3306"
     volumes:
       - account_movements_db_data:/var/lib/mysql
+    networks:
+      - custom_network
 
   # Servicio de RabbitMQ
   rabbitmq:
@@ -38,12 +42,16 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: admin_password
+    networks:
+      - custom_network
 
   # Microservicio de customer
   customer-service:
     build: ./customer       # Ruta relativa a la carpeta customer
     ports:
       - "8082:8080"
+    networks:
+      - custom_network
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://customer-db:3306/customer_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: customer_user
@@ -61,6 +69,8 @@ services:
     build: ./account-movements    # Ruta relativa a la carpeta account-movements
     ports:
       - "8083:8084"
+    networks:
+      - custom_network
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://account-movements-db:3306/account_movements_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: account_user
@@ -72,6 +82,9 @@ services:
     depends_on:
       - account-movements-db
       - rabbitmq
+
+networks:
+  custom_network:
 
 volumes:
   customer_db_data:

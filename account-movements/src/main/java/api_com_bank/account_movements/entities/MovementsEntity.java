@@ -26,6 +26,9 @@ public class MovementsEntity {
     @Column(name = "MOVEMENT_TYPE", nullable = false)
     private String movementType;
 
+    @Column(name = "INITIAL_BALANCE", nullable = false)
+    private Double initialBalance;
+
     @Column(name = "VALUE", nullable = false)
     private Double value;
 

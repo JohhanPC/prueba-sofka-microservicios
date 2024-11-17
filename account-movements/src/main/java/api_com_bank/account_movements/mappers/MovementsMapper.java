@@ -1,8 +1,8 @@
 package api_com_bank.account_movements.mappers;
 
+import api_com_bank.account_movements.dtos.reports.MovementReportDTO;
 import api_com_bank.account_movements.dtos.request.CreateMovementsRequestDTO;
 import api_com_bank.account_movements.dtos.request.UpdateMovementsRequestDTO;
-import api_com_bank.account_movements.dtos.response.MovementsResponseDTO;
 import api_com_bank.account_movements.entities.MovementsEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -16,6 +16,6 @@ public interface MovementsMapper {
 
     MovementsEntity toEntityUpdate(UpdateMovementsRequestDTO dto);
 
-    MovementsResponseDTO toDto(MovementsEntity entity);
+    MovementReportDTO toMovementReportDto(MovementsEntity entity);
 
 }

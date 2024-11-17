@@ -1,4 +1,4 @@
-package api_com_bank.account_movements.config;
+package api_com_bank.account_movements.config.rabbitMQ;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.core.Queue;

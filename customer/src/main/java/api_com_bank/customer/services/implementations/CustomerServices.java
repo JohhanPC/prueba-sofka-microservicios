@@ -61,7 +61,7 @@ public class CustomerServices implements ICustomerServices {
     }
 
     @Override
-    public CustomerResponseDTO findById(String identificationNumber) {
+    public CustomerResponseDTO findByIdentificationNumber(String identificationNumber) {
         log.info("Finding customer: {}", identificationNumber);
         return customerRepository.findByIdentificationNumber(identificationNumber)
                 .map(CustomerMapper.INSTANCE::toDto)

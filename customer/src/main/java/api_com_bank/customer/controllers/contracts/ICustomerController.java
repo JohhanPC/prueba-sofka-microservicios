@@ -18,7 +18,7 @@ public interface ICustomerController {
     @DeleteMapping(path = "/delete/{customerId}")
     ResponseEntity<ResponseDTO> delete(@PathVariable String customerId);
 
-    @GetMapping(path = "/findById/{customerId}")
-    ResponseEntity<CustomerResponseDTO> findById(@PathVariable String customerId);
+    @GetMapping(path = "/findByIdentificationNumber/{identificationNumber}")
+    ResponseEntity<CustomerResponseDTO> findByIdentificationNumber(@PathVariable String identificationNumber);
 
 }

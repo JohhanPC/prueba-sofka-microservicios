@@ -1,4 +1,4 @@
-package api_com_bank.account_movements.config;
+package api_com_bank.account_movements.config.rabbitMQ;
 
 import api_com_bank.account_movements.exceptions.MessageSendingException;
 import org.springframework.amqp.AmqpException;

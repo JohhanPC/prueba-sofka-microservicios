@@ -1,10 +1,11 @@
 package api_com_bank.account_movements.services.contracts;
 
+import api_com_bank.account_movements.dtos.reports.AccountMovementsReportResponseDTO;
 import api_com_bank.account_movements.dtos.request.CreateMovementsRequestDTO;
 import api_com_bank.account_movements.dtos.request.UpdateMovementsRequestDTO;
-import api_com_bank.account_movements.dtos.response.MovementsResponseDTO;
 import api_com_bank.account_movements.dtos.response.ResponseDTO;
-import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 public interface IMovementsServices {
 
@@ -12,8 +13,8 @@ public interface IMovementsServices {
 
     ResponseDTO update(UpdateMovementsRequestDTO updateMovementsRequestDTO);
 
-    ResponseDTO delete(@PathVariable Long id);
+    ResponseDTO delete(Long id);
 
-    MovementsResponseDTO getMovements(@PathVariable Long id);
+    AccountMovementsReportResponseDTO getMovements(String clientId, Date startDate, Date endDate);
 
 }

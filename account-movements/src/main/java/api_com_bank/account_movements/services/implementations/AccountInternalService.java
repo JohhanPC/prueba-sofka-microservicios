@@ -1,7 +1,7 @@
 package api_com_bank.account_movements.services.implementations;
 
-import api_com_bank.account_movements.dtos.message.AccountCreatedMessage;
-import api_com_bank.account_movements.dtos.message.CustomerCreatedMessage;
+import api_com_bank.account_movements.dtos.messages.AccountCreatedMessage;
+import api_com_bank.account_movements.dtos.messages.CustomerCreatedMessage;
 import api_com_bank.account_movements.dtos.request.AccountRequestDTO;
 import api_com_bank.account_movements.entities.AccountEntity;
 import api_com_bank.account_movements.mappers.AccountMapper;
